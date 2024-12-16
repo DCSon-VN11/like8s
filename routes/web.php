@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/home', function () {
     return view('dashboards');
@@ -12,10 +13,6 @@ Route::get('/lien-he', function () {
 Route::get('/tai-khoan', function () {
     return view('tai-khoan');
 });
-Route::get('/dang-nhap', function () {
-    return view('login');
-});
-Route::redirect('/dang-xuat', '/dang-nhap');
 Route::get('/nhat-ky-hoat-dong', function () {
     return view('activity-log');
 });
@@ -55,3 +52,6 @@ Route::get('/follow-tiktok', function () {
 Route::get('/dang-ky', function () {
     return view('register');
 });
+Route::get('/dang-nhap', [LoginController::class, 'showLoginForm'])->name('login'); // Route để hiển thị form đăng nhập
+Route::post('/dang-nhap', [LoginController::class, 'login']); // Route để xử lý đăng nhập
+Route::post('/dang-xuat', [LoginController::class, 'logout'])->name('logout'); // Route để xử lý đăng xuất

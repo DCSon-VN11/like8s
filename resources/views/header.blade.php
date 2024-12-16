@@ -48,11 +48,11 @@
                         <i class="bi bi-bell fs-5 shake" style="text-shadow: 0.25px 0.25px black;"></i>
                     </div>
                     <div class="header-item dropdown d-inline-block">
-                        <button type="button" class="border-0 px-1 show"
-                            id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="true" style="background-color: rgb(255, 255, 255)">
-                            <img class="rounded-circle header-profile-user" width="36px" height="36px" src="../image/logo.svg"
-                                alt="Avatar">
+                        <button type="button" class="border-0 px-1 show" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                            style="background-color: rgb(255, 255, 255)">
+                            <img class="rounded-circle header-profile-user" width="36px" height="36px"
+                                src="../image/logo.svg" alt="Avatar">
                             <span class="d-none d-xl-inline-block" key="t-henry">TLC</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </button>
@@ -72,9 +72,15 @@
                                     key="t-settings">Trang cá nhân</span>
                                 <span class="badge bg-danger">Hot</span></a>
                             <div class="dropdown-divider my-1"></div>
-                            <a class="dropdown-item text-danger" href="/dang-xuat"><i
+                            <a class="dropdown-item text-danger" href="javascript:void(0);"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                     class="fas fa-power-off font-size-16 align-middle me-2 text-danger"></i> <span
                                     key="t-logout">Đăng xuất</span></a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                                @method('POST')
+                            </form>
                         </div>
                     </div>
                     <div class="header-item">
