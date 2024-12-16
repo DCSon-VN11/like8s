@@ -17,6 +17,7 @@
         rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
+
 <body>
     <div class="account-pages my-5 pt-sm-5">
         <div class="container">
@@ -42,23 +43,28 @@
                                 <a href="/" class="auth-logo-light">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="../image/logo-light.svg?v=1" alt="" class="rounded-circle" height="80%">
+                                            <img src="../image/logo-light.svg?v=1" alt="" class="rounded-circle"
+                                                height="80%">
                                         </span>
                                     </div>
                                 </a>
                                 <a href="/" class="auth-logo-dark">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="../image/logo.svg" alt="" class="rounded-circle" height="68%">
+                                            <img src="../image/logo.svg" alt="" class="rounded-circle"
+                                                height="68%">
                                         </span>
                                     </div>
                                 </a>
                             </div>
                             <div class="p-2">
-                                <form class="needs-validation" novalidate="" action="/register" id="form" method="post">
-                                                                        <input type="hidden" name="_token" value="EktzOLclKMV5zxUQ2RCNe2K8ucnPIy9ApOTSYL5u">                                    <div class="mb-3">
+                                <form class="needs-validation" novalidate="" action="{{ route('register') }}"
+                                    id="form" method="post">
+                                    @csrf
+                                    <div class="mb-3">
                                         <label for="useremail" class="form-label">Tên đăng nhập</label>
-                                        <input type="text" name="username" class="form-control" id="username" placeholder="Nhập tên đăng nhập" required="">
+                                        <input type="text" name="username" class="form-control" id="username"
+                                            placeholder="Nhập tên đăng nhập" required>
                                         <div class="invalid-feedback">
                                             Vui lòng nhập dữ liệu
                                         </div>
@@ -66,23 +72,61 @@
 
                                     <div class="mb-3">
                                         <label for="userpassword" class="form-label">Mật khẩu</label>
-                                        <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu" aria-label="Password" required="">
+                                        <input type="password" name="password" class="form-control"
+                                            placeholder="Nhập mật khẩu" aria-label="Password" required>
                                         <div class="invalid-feedback">
                                             Vui lòng nhập dữ liệu
                                         </div>
                                     </div>
+
                                     <div class="mb-3">
                                         <label for="userpassword" class="form-label">Nhập lại mật khẩu</label>
-                                        <input type="password" class="form-control" name="password2" id="userpassword" placeholder="Nhập lại mật khẩu" required="">
+                                        <input type="password" class="form-control" name="password2" id="userpassword"
+                                            placeholder="Nhập lại mật khẩu" required>
                                         <div class="invalid-feedback">
                                             Vui lòng nhập dữ liệu
                                         </div>
                                     </div>
 
                                     <div class="mt-4 d-grid">
-                                        <div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-wq7opol56nlg" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LfBV2IpAAAAAHuKNsjds4l--y8vZHJY72HuSlQL&amp;co=aHR0cHM6Ly90YW5nbGlrZWNoZW8uY29tOjQ0Mw..&amp;hl=vi&amp;v=zIriijn3uj5Vpknvt_LnfNbF&amp;size=invisible&amp;cb=xjuc53b3m48o"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div><button type="submit" class="g-recaptcha btn btn-primary waves-effect waves-ligh" data-sitekey="6LfBV2IpAAAAAHuKNsjds4l--y8vZHJY72HuSlQL" data-callback="onSubmit">Đăng ký</button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Đăng
+                                            ký</button>
                                     </div>
                                 </form>
+
+                                <!-- Display errors if any -->
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
+                                <!-- Display success message if exists -->
+                                @if (session('success'))
+                                    <div class="alert alert-success" id="success-alert">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                <script>
+                                    // Kiểm tra nếu tồn tại thông báo thành công
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const successAlert = document.getElementById('success-alert');
+                                        if (successAlert) {
+                                            // Hiển thị thông báo trong 2 giây
+                                            setTimeout(() => {
+                                                // Chuyển hướng sang trang login
+                                                window.location.href = "{{ route('login') }}";
+                                            }, 2000); // 2000ms = 2 giây
+                                        }
+                                    });
+                                </script>
+
+
                             </div>
 
                         </div>
@@ -90,7 +134,8 @@
                     <div class="mt-5 text-center">
 
                         <div>
-                            <p>Bạn đã có tài khoản ? <a href="dang-nhap" class="fw-medium text-primary"> Đăng nhập ngay</a>
+                            <p>Bạn đã có tài khoản ? <a href="dang-nhap" class="fw-medium text-primary"> Đăng nhập
+                                    ngay</a>
                             </p>
                             <p>©
                                 <script>
@@ -105,4 +150,5 @@
         </div>
     </div>
 </body>
+
 </html>

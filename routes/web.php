@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/home', function () {
     return view('dashboards');
@@ -49,9 +50,8 @@ Route::get('/like-tiktok', function () {
 Route::get('/follow-tiktok', function () {
     return view('tiktok/tiktok-follow');
 });
-Route::get('/dang-ky', function () {
-    return view('register');
-});
 Route::get('/dang-nhap', [LoginController::class, 'showLoginForm'])->name('login'); // Route để hiển thị form đăng nhập
 Route::post('/dang-nhap', [LoginController::class, 'login']); // Route để xử lý đăng nhập
 Route::post('/dang-xuat', [LoginController::class, 'logout'])->name('logout'); // Route để xử lý đăng xuất
+Route::get('/dang-ky', [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::post('/dang-ky', [RegisterController::class, 'register'])->name('register');
