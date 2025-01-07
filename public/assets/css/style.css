@@ -1,0 +1,148 @@
+/* Phần style cho Toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 3em; /* Kích thước chiều rộng nhỏ hơn */
+    height: 1.5em; /* Kích thước chiều cao nhỏ hơn */
+}
+
+.switch input {
+    opacity: 0; /* Ẩn checkbox thực tế */
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    height: 1.2em; /* Kích thước nút nhỏ hơn */
+    width: 1.2em; /* Kích thước nút nhỏ hơn */
+    border-radius: 50%;
+    left: 0.15em; /* Khoảng cách từ bên trái */
+    bottom: 0.15em; /* Khoảng cách từ dưới */
+    background-color: white;
+    transition: 0.4s;
+}
+
+/* Khi checkbox được chọn */
+input:checked + .slider {
+    background-color: #7e3af2; /* Màu xanh khi chọn */
+}
+
+input:checked + .slider:before {
+    transform: translateX(1.5em); /* Di chuyển nút sang phải khi checked */
+}
+.thong-bao {
+    animation: fadeOut 4s ease-out forwards; /* Tổng thời gian là 4 giây */
+    opacity: 1;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.2; /* Giai đoạn mờ dần */
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    color: inherit;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.375rem;
+}
+
+.alert-heading {
+    color: inherit;
+}
+
+.alert-link {
+    font-weight: 600;
+    color: inherit;
+}
+
+.alert-dismissible {
+    padding-right: 3.75rem;
+}
+
+.alert-dismissible .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 0.9375rem 1.25rem;
+}
+
+/* Các loại alert màu sắc khác nhau */
+.alert-primary {
+    color: #084298;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.alert-secondary {
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-pink {
+    color: #c2185b;
+    background-color: #f8bbd0;
+    border-color: #f48fb1;
+}
+
+.alert-light {
+    color: #818182;
+    background-color: #fefefe;
+    border-color: #fdfdfe;
+}
+
+.alert-dark {
+    color: #1b1e21;
+    background-color: #d6d8d9;
+    border-color: #c6c8ca;
+}
