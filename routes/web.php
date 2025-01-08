@@ -147,7 +147,7 @@ Route::get('/vi-tien', [WalletController::class, 'showWallet'])
     ->middleware('auth');
 
 Route::post('/vi-tien', [WalletController::class, 'depositMoney'])->name('nap-tien');
-//Route::get('/nap-tien', [WalletController::class, 'depositMoney'])->name('nap-tien');
+Route::get('/nap-tien', [WalletController::class, 'depositMoney'])->name('nap-tien');
 
 Route::post('/updateInfo', [AccountController::class, 'updateInfo'])->name('updateInfo');
 
