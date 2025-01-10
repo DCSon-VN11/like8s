@@ -90,7 +90,7 @@
                 x-transition:leave-end="opacity-0  transform translate-y-1/2" @click.away="closeSmallModal2"
                 @keydown.escape="closeSmallModal2"
                 class="w-3/10 px-3 py-2 overflow-hidden bg-white rounded-t-lg dark:bg-gray-800 sm:rounded-lg sm:m-4 sm:max-w-xl"
-                role="dialog" id="small-modal">
+                role="dialog">
                 <!-- Nội dung Modal -->
                 <header class="flex justify-between">
                     <!-- Tiêu đề Modal -->
