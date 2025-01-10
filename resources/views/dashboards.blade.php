@@ -150,22 +150,22 @@
                     <div class="d-sm-flex flex-wrap">
                         <h4 class="card-title mt-1">Thống kê sử dụng</h4>
                         <div class="ms-auto d-flex align-items-center">
-                            <form method="GET" action="{{ route('dashboard') }}" class="d-flex align-items-center">
+                            <form method="GET" action="{{ route('dashboard') }}" class="d-flex flex-wrap align-items-center gap-3">
                                 <!-- Input chọn ngày bắt đầu -->
-                                <div class="me-3 d-flex align-items-center">
-                                    <label for="start_date">Từ:</label>
-                                    <input class="form-control ms-2" type="date" id="start_date"
-                                        name="start_date" value="{{ request('start_date', $startDate ?? '') }}">
+                                <div class="d-flex flex-column flex-sm-row align-items-center">
+                                    <label for="start_date" class="mb-1 mb-sm-0">Từ:</label>
+                                    <input class="form-control ms-2" type="date" id="start_date" name="start_date"
+                                        value="{{ request('start_date', $startDate ?? '') }}">
                                 </div>
                                 <!-- Input chọn ngày kết thúc -->
-                                <div class="me-3 d-flex align-items-center">
-                                    <label for="end_date">Đến:</label>
+                                <div class="d-flex flex-column flex-sm-row align-items-center">
+                                    <label for="end_date" class="mb-1 mb-sm-0">Đến:</label>
                                     <input class="form-control ms-2" type="date" id="end_date" name="end_date"
                                         value="{{ request('end_date', $endDate ?? '') }}">
                                 </div>
                                 <!-- Nút lọc -->
                                 <button class="btn btn-primary" type="submit">Lọc</button>
-                            </form>
+                            </form>                            
                         </div>
                     </div>
                     @if (session('warning'))
@@ -242,7 +242,7 @@
             chart.render();
         </script>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-12">
                 <div class="card border-0">
                     <div class="card-body">
                         <h4 class="card-title mb-4 font-size-15 fw-bold" id="text_service_today">Sử dụng hôm nay</h4>
@@ -276,7 +276,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>        
     </div>
 </div>
 @include('footer')
