@@ -34,12 +34,10 @@ class PayOSController extends Controller
                 ],
                 "returnUrl" => route('nap-tien', [
                     'amount' => $request->amount,
-                    'orderCode' => $orderCode,
                     'status' => 'PAID'
                 ]),
                 "cancelUrl" => route('nap-tien', [
                     'amount' => $request->amount,
-                    'orderCode' => $orderCode,
                     'status' => 'CANCELLED'
                 ])
             ];

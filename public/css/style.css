@@ -93,7 +93,8 @@
         list-style: none;
         padding-left: 15px;
     }
-    .menu li a {
+    .menu li .menu-title,
+    .menu li a{
         color: rgba(255, 255, 255, 0.6);
         text-decoration: none;
         display: flex;
@@ -176,8 +177,10 @@
         list-style: none;
         padding-left: 0;
     }
-
-    .menu li a {
+    .menu li {
+        position: relative;
+    }
+    .menu li .menu-title {
         color: rgba(23, 23, 23, 0.6);
         text-decoration: none;
         display: flex;
@@ -191,6 +194,9 @@
     div[id$="-menu"] {
         display: none;
         z-index: 100;
+    }
+    .menu li.open div[id$="-menu"] {
+        display: block;
     }
     div[id$="-menu"] a {
         display: block;

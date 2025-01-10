@@ -117,13 +117,13 @@
                     <ul>
                         <li>
                             <div>
-                                <a href="" role="button">
+                                <div class="menu-title" role="button">
                                     <div>
                                         <i class="fas fa-home me-2" style="font-size: 18px;"></i>
                                         Dashboard
                                     </div>
                                     <i class="bi bi-chevron-down ms-2" style="font-size: 10px;"></i>
-                                </a>
+                                </div>
                             </div>
                             <div id="dashboard-menu">
                                 <div>
@@ -142,13 +142,13 @@
                         </li>
                         <li>
                             <div>
-                                <a href="" role="button">
+                                <div class="menu-title" role="button">
                                     <div>
                                         <i class="fa-brands fa-facebook me-2" style="font-size: 18px;"></i>
                                         Dịch vụ Facebook
                                     </div>
                                     <i class="bi bi-chevron-down ms-2" style="font-size: 10px;"></i>
-                                </a>
+                                </div>
                             </div>
                             <div id="facebook-menu">
                                 <div>
@@ -191,13 +191,13 @@
                         </li>
                         <li>
                             <div>
-                                <a href="" role="button">
+                                <div class="menu-title" role="button">
                                     <div>
                                         <i class="fa-brands fa-instagram me-2" style="font-size: 18px;"></i>
                                         Dịch vụ Intagram
                                     </div>
                                     <i class="bi bi-chevron-down ms-2" style="font-size: 10px;"></i>
-                                </a>
+                                </div>
                             </div>
                             <div id="intagram-menu">
                                 <div>
@@ -216,12 +216,12 @@
                         </li>
                         <li>
                             <div>
-                                <a href="" role="button">
+                                <div class="menu-title" role="button">
                                     <div><i class="fa-brands fa-tiktok me-2" style="font-size: 18px;"></i>
                                         Dịch vụ TikTok
                                     </div>
                                     <i class="bi bi-chevron-down ms-2" style="font-size: 10px;"></i>
-                                </a>
+                                </div>
                             </div>
                             <div id="tiktok-menu" style="width:25%;">
                                 <div>
@@ -256,9 +256,6 @@
                             $('.menu ul li').off('click').on('click', function(event) {
                                 var $this = $(this);
                                 var $link = $this.find('a');
-                                if ($link.attr('href') === "") {
-                                    event.preventDefault();
-                                }
 
                                 var $menu = $this.find('div[id$="-menu"]');
                                 $('div[id$="-menu"]').not($menu).removeClass('d-block').slideUp();
@@ -359,10 +356,6 @@
         $(".right-bar-toggle").on("click", function(e) {
             $("body").toggleClass("right-bar-enabled")
         });
-        $(document).on("click", "body", function(e) {
-            0 < s(e.target).closest(".right-bar-toggle, .right-bar").length || s("body").removeClass(
-                "right-bar-enabled")
-        })
     </script>
     <div class="rightbar-overlay"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
